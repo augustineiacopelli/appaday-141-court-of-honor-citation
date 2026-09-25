@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0a3161">
+<title>AppADay 141 / Court of Honor Citation</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=EB+Garamond:ital,wght@0,400;0,600;1,400&display=swap">
+<style>
+:root{
+  --bg:#f3f4f7;
+  --ink:#14213d;
+  --blue:#0a3161;
+  --blue-2:#1d4e89;
+  --red:#b31942;
+  --red-dark:#8f1434;
+  --cream:#fffefa;
+  --card:#ffffff;
+  --muted:#5f687c;
+  --line:#d3d8e2;
+  --display:'Cinzel', Georgia, 'Times New Roman', serif;
+  --text:'EB Garamond', Garamond, Georgia, 'Times New Roman', serif;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;min-height:100dvh;background:var(--bg);color:var(--ink);font-family:var(--text);font-size:18px;line-height:1.4;display:flex;flex-direction:column}
+button,input,select,textarea{font:inherit;color:inherit}
+.defs{position:absolute;width:0;height:0;overflow:hidden}
+
+/* Header and footer */
+.site-header{background:var(--blue);color:#fff;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:6px 10px 6px 16px}
+.site-header a{color:#fff;text-decoration:none;font-family:var(--display);font-weight:600;letter-spacing:.03em;font-size:clamp(15px,3.8vw,20px);min-height:44px;display:flex;align-items:center}
+.gear{width:44px;height:44px;flex:0 0 44px;border-radius:6px;border:1px solid rgba(255,255,255,.35);background:transparent;color:#fff;display:grid;place-items:center;cursor:pointer}
+.gear:hover{background:rgba(255,255,255,.1)}
+.stripe{height:14px;background:repeating-linear-gradient(to bottom,var(--red) 0 2px,#fff 2px 4px)}
+.site-footer{text-align:center;padding:12px 16px 20px;font-size:15px;color:var(--muted);border-top:1px solid var(--line)}
+.site-footer a{display:inline-flex;align-items:center;min-height:44px;color:var(--blue);font-weight:600}
+
+/* Layout */
+.layout{flex:1;display:grid;grid-template-columns:minmax(0,1fr);gap:16px;padding:16px;width:100%}
+.panel{display:flex;flex-direction:column;gap:14px;min-width:0}
+.preview{min-width:0}
+.card{background:var(--card);border-top:4px solid var(--red);border-radius:3px;box-shadow:0 1px 2px rgba(10,49,97,.14),0 0 0 1px rgba(10,49,97,.06);padding:14px 16px 16px}
+.card h2{font-family:var(--display);font-weight:600;font-size:17px;letter-spacing:.04em;color:var(--blue);margin:0 0 10px;display:flex;align-items:center;gap:8px}
+.card h2 svg{width:15px;height:15px;fill:var(--red);flex:0 0 15px}
+label{display:block;font-size:16px;font-weight:600;color:var(--blue);margin:12px 0 4px}
+input[type=text],input[type=date],input[type=password],select,textarea{width:100%;min-height:44px;padding:8px 10px;border:1px solid var(--line);border-radius:3px;background:#fff;font-size:16px}
+select{appearance:auto}
+textarea{min-height:128px;resize:vertical;font-size:17px;font-style:italic;line-height:1.45;display:block}
+input:focus,select:focus,textarea:focus{outline:2px solid var(--blue-2);outline-offset:0;border-color:var(--blue-2)}
+button:focus-visible,a:focus-visible{outline:2px solid var(--red);outline-offset:2px}
+.site-header a:focus-visible,.gear:focus-visible{outline-color:#fff}
+.seg{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--blue);border-radius:3px;overflow:hidden}
+.seg button{min-height:44px;border:0;background:#fff;color:var(--blue);font-family:var(--display);font-weight:600;font-size:16px;letter-spacing:.06em;cursor:pointer}
+.seg button + button{border-left:1px solid var(--blue)}
+.seg button[aria-pressed="true"]{background:var(--blue);color:#fff}
+.row2{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:10px}
+.btn{min-height:44px;padding:10px 14px;border-radius:3px;border:1px solid var(--blue);background:#fff;color:var(--blue);font-weight:600;font-size:16px;cursor:pointer}
+.btn:hover{background:#eef2f8}
+.btn.primary{background:var(--red);border-color:var(--red);color:#fff}
+.btn.primary:hover{background:var(--red-dark);border-color:var(--red-dark)}
+.btn.navy{background:var(--blue);color:#fff}
+.btn.navy:hover{background:var(--blue-2)}
+.btn:disabled{opacity:.6;cursor:progress}
+.gen-row{display:flex;gap:10px;align-items:center;margin-top:10px}
+.gen-row .btn{flex:1}
+#status{min-height:1.4em;font-size:15px;margin:8px 0 0;color:var(--muted)}
+#status.ok{color:#1e6b3a}
+#status.error{color:var(--red)}
+.actions{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.actions .btn{padding:10px 6px}
+.preview-note{font-size:15px;color:var(--muted);text-align:center;margin:10px 0 0}
+
+/* Certificate: every size inside uses cqw */
+#cert{position:relative;width:100%;aspect-ratio:11 / 8.5;container-type:inline-size;background:var(--cream);box-shadow:0 8px 28px rgba(10,49,97,.2),0 1px 3px rgba(10,49,97,.2)}
+.frame{position:absolute;inset:0;border:.5cqw solid var(--blue);padding:5cqw;display:flex;flex-direction:column;align-items:center;text-align:center;color:var(--ink);font-family:var(--text)}
+.frame::before{content:"";position:absolute;inset:1.6cqw;border:.2cqw solid var(--red);pointer-events:none}
+#certUnit{font-family:var(--display);font-weight:600;font-size:1.6cqw;letter-spacing:.3em;padding-left:.3em;text-transform:uppercase;color:var(--red);line-height:1.3;margin-top:.4cqw}
+.stars{display:flex;align-items:center;justify-content:center;gap:1cqw;margin-top:1.2cqw}
+.star{display:block;width:1.5cqw;height:1.5cqw;color:var(--blue);fill:currentColor}
+.star.big{width:2.2cqw;height:2.2cqw;color:var(--red)}
+#certPresented{font-style:italic;font-size:1.8cqw;line-height:1.3;margin-top:1.6cqw}
+#certName{font-family:var(--display);font-weight:700;font-size:5.2cqw;line-height:1.2;letter-spacing:.02em;color:var(--blue);margin-top:.6cqw;width:100%;white-space:nowrap;overflow:hidden}
+#certRank{font-size:1.9cqw;line-height:1.3;margin-top:.4cqw}
+.cit-wrap{flex:1;min-height:0;width:100%;display:flex;align-items:center;justify-content:center;padding:1.4cqw 0}
+#certCitation{font-style:italic;font-size:2.1cqw;line-height:1.45;max-width:70cqw;margin:0}
+#certDate{font-size:1.7cqw;line-height:1.3;letter-spacing:.03em}
+.sigs{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);align-items:end;column-gap:5cqw;width:78cqw;margin-top:1.4cqw}
+.sig{display:flex;flex-direction:column;min-width:0}
+.sig-name{font-size:1.7cqw;line-height:1.3;min-height:1.3em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sig-rule{border-top:.12cqw solid var(--ink);margin:.4cqw 0}
+.sig-title{font-family:var(--display);font-weight:600;font-size:1.4cqw;letter-spacing:.1em;font-variant:small-caps;color:var(--blue);line-height:1.3}
+.seal{width:9cqw;height:9cqw;border-radius:50%;background:var(--blue);border:.5cqw solid var(--red);box-shadow:inset 0 0 0 .4cqw var(--blue),inset 0 0 0 .6cqw #fff;display:grid;place-items:center}
+.seal svg{width:4.4cqw;height:4.4cqw;color:#fff;fill:currentColor}
+.ph{color:#a2a9b9}
+
+/* Settings modal */
+.modal{position:fixed;inset:0;background:rgba(10,20,40,.55);display:flex;align-items:center;justify-content:center;padding:16px;z-index:50}
+.modal[hidden]{display:none}
+.dialog{background:#fff;border-top:4px solid var(--red);border-radius:4px;width:440px;max-width:92vw;max-height:90dvh;overflow:auto;padding:18px}
+.dialog h2{font-family:var(--display);font-weight:600;font-size:19px;color:var(--blue);margin:0 0 4px}
+.hint{font-size:15px;color:var(--muted);margin:6px 0 0}
+.dialog .btns{display:flex;gap:10px;justify-content:flex-end;margin-top:18px}
+
+@media (min-width:900px){
+  .layout{grid-template-columns:380px minmax(0,1fr);align-items:start;gap:24px;padding:24px}
+  .preview{position:sticky;top:16px}
+}
+
+@page{size:letter landscape;margin:0.25in}
+@media print{
+  html,body{background:#fff;min-height:0;height:auto;margin:0;padding:0;overflow:hidden}
+  .site-header,.stripe,.panel,.site-footer,.modal,.preview-note{display:none !important}
+  .layout{display:block;padding:0;margin:0}
+  .preview{position:static}
+  #cert{position:absolute;top:0;left:0;width:10.3in;box-shadow:none;break-inside:avoid;page-break-inside:avoid;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  #cert *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none !important}}
+</style>
+</head>
+<body>
+<svg class="defs" aria-hidden="true" focusable="false">
+  <symbol id="starShape" viewBox="0 0 24 24"><polygon points="12,1.5 14.9,8.6 22.5,9.2 16.7,14.2 18.5,21.6 12,17.6 5.5,21.6 7.3,14.2 1.5,9.2 9.1,8.6"/></symbol>
+</svg>
+
+<header class="site-header">
+  <a href="https://augustineiacopelli.github.io/appaday/">AppADay 141 / Court of Honor Citation</a>
+  <button type="button" class="gear" id="btnSettings" aria-label="Settings">
+    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" aria-hidden="true"><circle cx="12" cy="12" r="3" stroke-width="2"/><circle cx="12" cy="12" r="7.5" stroke-width="3.5" stroke-dasharray="2.95 2.94"/></svg>
+  </button>
+</header>
+<div class="stripe" aria-hidden="true"></div>
+
+<main class="layout">
+  <section class="panel" aria-label="Certificate details">
+    <div class="card">
+      <h2><svg aria-hidden="true"><use href="#starShape"/></svg>Unit</h2>
+      <div class="seg" role="group" aria-label="Unit type">
+        <button type="button" id="btnPack" aria-pressed="true">Pack</button>
+        <button type="button" id="btnTroop" aria-pressed="false">Troop</button>
+      </div>
+      <label for="unitNumber" id="lblUnitNumber">Pack number</label>
+      <input type="text" id="unitNumber" inputmode="numeric" pattern="[0-9]*" maxlength="5" autocomplete="off" placeholder="123">
+      <div class="row2">
+        <div><label for="signer1" id="lblSigner1">Cubmaster</label><input type="text" id="signer1" autocomplete="off"></div>
+        <div><label for="signer2" id="lblSigner2">Committee Chair</label><input type="text" id="signer2" autocomplete="off"></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2><svg aria-hidden="true"><use href="#starShape"/></svg>Scout</h2>
+      <label for="scoutName" style="margin-top:0">Scout name</label>
+      <input type="text" id="scoutName" autocomplete="off" placeholder="Name as it should appear">
+      <div class="row2">
+        <div><label for="rankSelect">Rank</label><select id="rankSelect"></select></div>
+        <div><label for="ceremonyDate">Ceremony date</label><input type="date" id="ceremonyDate"></div>
+      </div>
+      <label for="highlights">Highlight</label>
+      <input type="text" id="highlights" autocomplete="off" placeholder="Optional: a favorite campout, service project, or moment">
+    </div>
+
+    <div class="card">
+      <h2><svg aria-hidden="true"><use href="#starShape"/></svg>Citation</h2>
+      <textarea id="citation" aria-label="Citation text" placeholder="Generate a citation, or write your own here."></textarea>
+      <div class="gen-row"><button type="button" class="btn primary" id="btnGenerate">Generate citation</button></div>
+      <p id="status" role="status" aria-live="polite"></p>
+    </div>
+
+    <div class="card">
+      <h2><svg aria-hidden="true"><use href="#starShape"/></svg>Certificate</h2>
+      <div class="actions">
+        <button type="button" class="btn navy" id="btnPrint">Print</button>
+        <button type="button" class="btn" id="btnPng">Save image</button>
+        <button type="button" class="btn" id="btnNext">Next Scout</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="preview" aria-label="Certificate preview">
+    <div id="cert">
+      <div class="frame">
+        <div id="certUnit"></div>
+        <div class="stars" aria-hidden="true">
+          <svg class="star" viewBox="0 0 24 24"><use href="#starShape"/></svg>
+          <svg class="star" viewBox="0 0 24 24"><use href="#starShape"/></svg>
+          <svg class="star big" viewBox="0 0 24 24"><use href="#starShape"/></svg>
+          <svg class="star" viewBox="0 0 24 24"><use href="#starShape"/></svg>
+          <svg class="star" viewBox="0 0 24 24"><use href="#starShape"/></svg>
+        </div>
+        <div id="certPresented">Presented to</div>
+        <div id="certName"></div>
+        <div id="certRank"></div>
+        <div class="cit-wrap"><p id="certCitation"></p></div>
+        <div id="certDate"></div>
+        <div class="sigs">
+          <div class="sig" id="certSig1"><span class="sig-name"></span><div class="sig-rule"></div><span class="sig-title"></span></div>
+          <div class="seal" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#starShape"/></svg></div>
+          <div class="sig" id="certSig2"><span class="sig-name"></span><div class="sig-rule"></div><span class="sig-title"></span></div>
+        </div>
+      </div>
+    </div>
+    <p class="preview-note">Live preview. Prints on one letter landscape page.</p>
+  </section>
+</main>
+
+<footer class="site-footer"><a href="https://augustineiacopelli.github.io/appaday/">More apps at AppADay</a></footer>
+
+<div class="modal" id="settings" hidden>
+  <div class="dialog" role="dialog" aria-modal="true" aria-labelledby="settingsTitle">
+    <h2 id="settingsTitle">Settings</h2>
+    <label for="apiKey">Anthropic API key</label>
+    <input type="password" id="apiKey" autocomplete="off" spellcheck="false">
+    <p class="hint">Stored only in this browser. Without a key, citations come from built in templates.</p>
+    <label for="sessionName">Session name</label>
+    <input type="text" id="sessionName" autocomplete="off" placeholder="Optional">
+    <div class="btns">
+      <button type="button" class="btn" id="btnCloseSettings">Close</button>
+      <button type="button" class="btn navy" id="btnSaveSettings">Save</button>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+'use strict';
+
+const CLAUDE_MODEL = 'claude-sonnet-5';
+const PACK_RANKS = ['Lion','Tiger','Wolf','Bear','Webelos','Arrow of Light'];
+const PACK_TIERS = [0,0,1,1,1,1];
+const TROOP_RANKS = ['Scout','Tenderfoot','Second Class','First Class','Star','Life','Eagle'];
+const TROOP_TIERS = [2,2,2,2,3,3,3];
+const TONES = [
+  'Warm, simple, and joyful, written so a parent can read it aloud to a young child.',
+  'Encouraging and lightly playful, celebrating effort, curiosity, and teamwork.',
+  'Earnest and steady, recognizing growing skill, responsibility, and Scout spirit.',
+  'Formal, dignified, and forward looking, honoring leadership, service, and character.'
+];
+const EAGLE_NOTE = 'This is the Eagle Scout rank, the highest in Scouting; the citation should carry special gravity and speak to the leader and citizen this Scout is becoming.';
+const UNIT_CONFIG = {
+  pack:  { label:'Pack',  event:'Advancement Ceremony', signers:['Cubmaster','Committee Chair'], ranks:PACK_RANKS,  tiers:PACK_TIERS },
+  troop: { label:'Troop', event:'Court of Honor',       signers:['Scoutmaster','Committee Chair'], ranks:TROOP_RANKS, tiers:TROOP_TIERS }
+};
+const LS_UNIT = 'appaday-141-unit';
+const LS_KEY = 'appaday-141-apikey';
+const LS_SESSION = 'appaday-141-session';
+
+const SYSTEM_PROMPT = 'You write short citations for Scouting advancement certificates. Write two or three sentences, under 70 words total, in plain text. Do not use quotation marks, a salutation, a signature, or a title. Refer to the Scout by first name. Use only the facts provided; never invent achievements, events, or merit badges. If a highlight is provided, weave it in naturally. Match the requested tone exactly. Return only the citation text.';
+const STAR_PTS = [12,1.5, 14.9,8.6, 22.5,9.2, 16.7,14.2, 18.5,21.6, 12,17.6, 5.5,21.6, 7.3,14.2, 1.5,9.2, 9.1,8.6];
+const COLORS = { blue:'#0a3161', red:'#b31942', ink:'#14213d', cream:'#fffefa', white:'#ffffff' };
+
+const $ = function(id){ return document.getElementById(id); };
+const el = {
+  btnPack:$('btnPack'), btnTroop:$('btnTroop'), unitNumber:$('unitNumber'), lblUnitNumber:$('lblUnitNumber'),
+  signer1:$('signer1'), signer2:$('signer2'), lblSigner1:$('lblSigner1'), lblSigner2:$('lblSigner2'),
+  scoutName:$('scoutName'), rankSelect:$('rankSelect'), ceremonyDate:$('ceremonyDate'), highlights:$('highlights'),
+  citation:$('citation'), btnGenerate:$('btnGenerate'), status:$('status'),
+  btnPrint:$('btnPrint'), btnPng:$('btnPng'), btnNext:$('btnNext'),
+  cert:$('cert'), certUnit:$('certUnit'), certPresented:$('certPresented'), certName:$('certName'),
+  certRank:$('certRank'), certCitation:$('certCitation'), certDate:$('certDate'),
+  certSig1:$('certSig1'), certSig2:$('certSig2'),
+  settings:$('settings'), apiKey:$('apiKey'), sessionName:$('sessionName'),
+  btnSettings:$('btnSettings'), btnSaveSettings:$('btnSaveSettings'), btnCloseSettings:$('btnCloseSettings')
+};
+
+function todayIso(){
+  const d = new Date();
+  return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2,'0') + '-' + String(d.getDate()).padStart(2,'0');
+}
+
+const state = { unitType:'pack', unitNumber:'', signer1:'', signer2:'', scoutName:'', rankIndex:0, date:todayIso(), highlights:'', citation:'' };
+let busy = false;
+
+function lsGet(k){ try { return localStorage.getItem(k); } catch (e) { return null; } }
+function lsSet(k, v){ try { localStorage.setItem(k, v); return true; } catch (e) { return false; } }
+
+function cfg(){ return UNIT_CONFIG[state.unitType]; }
+function currentTier(){ return cfg().tiers[state.rankIndex]; }
+function isEagle(){ return cfg().ranks[state.rankIndex] === 'Eagle'; }
+function firstName(){ return state.scoutName.trim().split(/\s+/)[0] || ''; }
+
+function loadUnit(){
+  const raw = lsGet(LS_UNIT);
+  if (!raw) return;
+  try {
+    const u = JSON.parse(raw);
+    if (u && UNIT_CONFIG[u.unitType]) state.unitType = u.unitType;
+    if (u && typeof u.unitNumber === 'string') state.unitNumber = u.unitNumber;
+    if (u && typeof u.signer1 === 'string') state.signer1 = u.signer1;
+    if (u && typeof u.signer2 === 'string') state.signer2 = u.signer2;
+  } catch (e) { /* ignore corrupt data */ }
+}
+
+function saveUnit(){
+  lsSet(LS_UNIT, JSON.stringify({ unitType:state.unitType, unitNumber:state.unitNumber, signer1:state.signer1, signer2:state.signer2 }));
+}
+
+function buildRankOptions(){
+  const ranks = cfg().ranks;
+  el.rankSelect.textContent = '';
+  ranks.forEach(function(r, i){
+    const o = document.createElement('option');
+    o.value = String(i);
+    o.textContent = r;
+    el.rankSelect.appendChild(o);
+  });
+  el.rankSelect.value = String(state.rankIndex);
+}
+
+function setUnitType(type){
+  if (!UNIT_CONFIG[type]) type = 'pack';
+  state.unitType = type;
+  const c = cfg();
+  state.rankIndex = Math.min(Math.max(state.rankIndex, 0), c.ranks.length - 1);
+  buildRankOptions();
+  el.btnPack.setAttribute('aria-pressed', String(type === 'pack'));
+  el.btnTroop.setAttribute('aria-pressed', String(type === 'troop'));
+  el.lblUnitNumber.textContent = c.label + ' number';
+  el.lblSigner1.textContent = c.signers[0];
+  el.lblSigner2.textContent = c.signers[1];
+  el.signer1.placeholder = c.signers[0] + ' name';
+  el.signer2.placeholder = c.signers[1] + ' name';
+  saveUnit();
+  render();
+}
+
+function formatDate(iso){
+  const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(iso || '');
+  if (!m) return '';
+  const d = new Date(Number(m[1]), Number(m[2]) - 1, Number(m[3]));
+  return d.toLocaleDateString('en-US', { month:'long', day:'numeric', year:'numeric' });
+}
+
+function setText(node, value, placeholder){
+  node.textContent = value || placeholder;
+  node.classList.toggle('ph', !value);
+}
+
+function fitName(){
+  const n = el.certName;
+  let size = 5.2;
+  n.style.fontSize = size + 'cqw';
+  while (n.scrollWidth > n.clientWidth + 1 && size > 3.6) {
+    size = Math.max(3.6, Math.round((size - 0.2) * 10) / 10);
+    n.style.fontSize = size + 'cqw';
+  }
+  n.dataset.cqw = String(size);
+}
+
+function render(){
+  const c = cfg();
+  const num = state.unitNumber.trim();
+  el.certUnit.textContent = c.label + (num ? ' ' + num : '') + ' ' + c.event;
+  setText(el.certName, state.scoutName.trim(), 'Scout Name');
+  el.certRank.textContent = 'in recognition of earning the rank of ' + c.ranks[state.rankIndex];
+  setText(el.certCitation, state.citation.trim(), 'Your citation will appear here.');
+  el.certDate.textContent = formatDate(state.date);
+  el.certSig1.querySelector('.sig-name').textContent = state.signer1.trim();
+  el.certSig1.querySelector('.sig-title').textContent = c.signers[0];
+  el.certSig2.querySelector('.sig-name').textContent = state.signer2.trim();
+  el.certSig2.querySelector('.sig-title').textContent = c.signers[1];
+  fitName();
+  updateGenLabel();
+}
+
+function updateGenLabel(){
+  if (busy) return;
+  el.btnGenerate.textContent = state.citation.trim() ? 'Regenerate' : 'Generate citation';
+}
+
+function setStatus(msg, kind){
+  el.status.textContent = msg || '';
+  el.status.className = kind || '';
+}
+
+function buildPrompt(){
+  const c = cfg();
+  const num = state.unitNumber.trim();
+  let tone = TONES[currentTier()];
+  if (isEagle()) tone += ' ' + EAGLE_NOTE;
+  const h = state.highlights.trim();
+  return [
+    'Scout first name: ' + firstName(),
+    'Rank and unit: ' + c.ranks[state.rankIndex] + ', ' + c.label + (num ? ' ' + num : ''),
+    'Tone: ' + tone,
+    'Highlight: ' + (h || 'none')
+  ].join('\n');
+}
+
+async function callClaude(key){
+  const res = await fetch('https://api.anthropic.com/v1/messages', {
+    method: 'POST',
+    headers: {
+      'content-type': 'application/json',
+      'x-api-key': key,
+      'anthropic-version': '2023-06-01',
+      'anthropic-dangerous-direct-browser-access': 'true'
+    },
+    body: JSON.stringify({
+      model: CLAUDE_MODEL,
+      max_tokens: 300,
+      thinking: { type: 'disabled' },
+      system: SYSTEM_PROMPT,
+      messages: [{ role: 'user', content: buildPrompt() }]
+    })
+  });
+  let data = null;
+  try { data = await res.json(); } catch (e) { data = null; }
+  if (!res.ok) {
+    const msg = data && data.error && data.error.message ? data.error.message : (res.statusText || 'Request failed');
+    throw new Error('HTTP ' + res.status + ': ' + msg);
+  }
+  const blocks = (data && Array.isArray(data.content)) ? data.content : [];
+  let text = blocks.filter(function(b){ return b && b.type === 'text'; }).map(function(b){ return b.text || ''; }).join('').trim();
+  text = text.replace(/^["\u201C\u201D]+/, '').replace(/["\u201C\u201D]+$/, '').trim();
+  if (!text) {
+    console.log('Empty citation. stop_reason:', data && data.stop_reason, 'block types:', blocks.map(function(b){ return b && b.type; }));
+    throw new Error('The response contained no citation text. Try Regenerate.');
+  }
+  return text;
+}
+
+function fallbackCitation(){
+  const n = firstName() || 'This Scout';
+  const r = cfg().ranks[state.rankIndex];
+  const t = currentTier();
+  let text;
+  if (isEagle()) {
+    text = n + ' has earned the rank of Eagle Scout, the highest honor in Scouting, through leadership, service to others, and steadfast character. The Troop honors this achievement and looks forward to the leader and citizen ' + n + ' is becoming.';
+  } else if (t === 0) {
+    text = n + ' worked hard, learned new things, and had lots of fun earning the ' + r + ' rank. We are so proud of you, ' + n + ', and we cannot wait to see your next adventure!';
+  } else if (t === 1) {
+    text = n + ' has earned the ' + r + ' rank through steady effort, a curious mind, and a true spirit of teamwork. The den and the whole Pack are proud to celebrate this achievement.';
+  } else if (t === 2) {
+    text = n + ' has earned the rank of ' + r + ' by building real skills, taking on responsibility, and living the Scout Oath and Law. The Troop honors this steady progress along the trail.';
+  } else {
+    text = n + ' has earned the rank of ' + r + ' through leadership, service to others, and the character that marks a true Scout. The Troop honors this accomplishment and the example ' + n + ' sets for others.';
+  }
+  const h = state.highlights.trim().replace(/[.!?\s]+$/, '');
+  if (h) text += ' ' + n + ' will be especially remembered for ' + h + '.';
+  return text;
+}
+
+async function generate(){
+  if (busy) return;
+  if (!state.scoutName.trim()) {
+    setStatus('Enter the Scout name first.', 'error');
+    el.scoutName.focus();
+    return;
+  }
+  const key = (lsGet(LS_KEY) || '').trim();
+  if (!key) {
+    state.citation = fallbackCitation();
+    el.citation.value = state.citation;
+    render();
+    setStatus('Template citation. Add an API key in Settings for a personalized one.', 'info');
+    return;
+  }
+  busy = true;
+  el.btnGenerate.disabled = true;
+  el.btnGenerate.textContent = 'Writing...';
+  setStatus('Writing the citation...', 'info');
+  try {
+    const text = await callClaude(key);
+    state.citation = text;
+    el.citation.value = text;
+    setStatus('Citation ready. Edit it freely above.', 'ok');
+  } catch (e) {
+    setStatus(e && e.message ? e.message : String(e), 'error');
+  } finally {
+    busy = false;
+    el.btnGenerate.disabled = false;
+    render();
+  }
+}
+
+function readyToOutput(){
+  if (!state.scoutName.trim()) {
+    setStatus('Add the Scout name before printing or saving.', 'error');
+    return false;
+  }
+  if (!state.citation.trim()) {
+    setStatus('Generate or write a citation before printing or saving.', 'error');
+    return false;
+  }
+  return true;
+}
+
+function printCert(){
+  if (!readyToOutput()) return;
+  setStatus('', '');
+  fitName();
+  window.print();
+}
+
+function wrapLines(ctx, text, maxWidth){
+  const words = text.split(/\s+/).filter(Boolean);
+  const lines = [];
+  let line = '';
+  for (let i = 0; i < words.length; i++) {
+    const test = line ? line + ' ' + words[i] : words[i];
+    if (line && ctx.measureText(test).width > maxWidth) {
+      lines.push(line);
+      line = words[i];
+    } else {
+      line = test;
+    }
+  }
+  if (line) lines.push(line);
+  return lines;
+}
+
+function kebab(str){
+  return String(str).toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '') || 'scout';
+}
+
+function drawStar(ctx, x, y, size, color){
+  const k = size / 24;
+  ctx.beginPath();
+  for (let i = 0; i < STAR_PTS.length; i += 2) {
+    const px = x + STAR_PTS[i] * k;
+    const py = y + STAR_PTS[i + 1] * k;
+    if (i === 0) ctx.moveTo(px, py); else ctx.lineTo(px, py);
+  }
+  ctx.closePath();
+  ctx.fillStyle = color;
+  ctx.fill();
+}
+
+function drawCertificate(){
+  const W = 2200, H = 1700;
+  const s = W / 100;
+  const canvas = document.createElement('canvas');
+  canvas.width = W;
+  canvas.height = H;
+  const ctx = canvas.getContext('2d');
+  const cr = el.cert.getBoundingClientRect();
+  const k = W / cr.width;
+  function box(node){
+    const r = node.getBoundingClientRect();
+    return { x:(r.left - cr.left) * k, y:(r.top - cr.top) * k, w:r.width * k, h:r.height * k,
+             cx:(r.left - cr.left + r.width / 2) * k, cy:(r.top - cr.top + r.height / 2) * k };
+  }
+  const hasLS = 'letterSpacing' in ctx;
+  function line(node, font, color, text, spacingPx){
+    const b = box(node);
+    ctx.font = font;
+    ctx.fillStyle = color;
+    if (hasLS) ctx.letterSpacing = (spacingPx || 0) + 'px';
+    ctx.fillText(text, b.cx + (hasLS && spacingPx ? spacingPx / 2 : 0), b.cy, Math.max(b.w, 1));
+    if (hasLS) ctx.letterSpacing = '0px';
+  }
+
+  ctx.fillStyle = COLORS.cream;
+  ctx.fillRect(0, 0, W, H);
+  ctx.lineWidth = 0.5 * s;
+  ctx.strokeStyle = COLORS.blue;
+  ctx.strokeRect(0.25 * s, 0.25 * s, W - 0.5 * s, H - 0.5 * s);
+  ctx.lineWidth = 0.2 * s;
+  ctx.strokeStyle = COLORS.red;
+  ctx.strokeRect(2.2 * s, 2.2 * s, W - 4.4 * s, H - 4.4 * s);
+
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'middle';
+
+  line(el.certUnit, '600 ' + (1.6 * s) + 'px Cinzel, Georgia, serif', COLORS.red, el.certUnit.textContent.toUpperCase(), 0.3 * 1.6 * s);
+
+  el.cert.querySelectorAll('.stars .star').forEach(function(star){
+    const b = box(star);
+    drawStar(ctx, b.x, b.y, b.w, star.classList.contains('big') ? COLORS.red : COLORS.blue);
+  });
+
+  line(el.certPresented, 'italic ' + (1.8 * s) + 'px "EB Garamond", Georgia, serif', COLORS.ink, 'Presented to');
+  const nameSize = parseFloat(el.certName.dataset.cqw || '5.2') * s;
+  line(el.certName, '700 ' + nameSize + 'px Cinzel, Georgia, serif', COLORS.blue, state.scoutName.trim(), 0.02 * nameSize);
+  line(el.certRank, '400 ' + (1.9 * s) + 'px "EB Garamond", Georgia, serif', COLORS.ink, el.certRank.textContent);
+
+  ctx.font = 'italic ' + (2.1 * s) + 'px "EB Garamond", Georgia, serif';
+  ctx.fillStyle = COLORS.ink;
+  const lines = wrapLines(ctx, state.citation.trim(), 70 * s);
+  const lh = 2.1 * 1.45 * s;
+  const cb = box(el.certCitation);
+  let y = cb.cy - (lines.length - 1) * lh / 2;
+  for (let i = 0; i < lines.length; i++) {
+    ctx.fillText(lines[i], W / 2, y);
+    y += lh;
+  }
+
+  line(el.certDate, '400 ' + (1.7 * s) + 'px "EB Garamond", Georgia, serif', COLORS.ink, el.certDate.textContent, 0.03 * 1.7 * s);
+
+  [el.certSig1, el.certSig2].forEach(function(sig){
+    const nameEl = sig.querySelector('.sig-name');
+    const rule = sig.querySelector('.sig-rule');
+    const title = sig.querySelector('.sig-title');
+    if (nameEl.textContent) line(nameEl, '400 ' + (1.7 * s) + 'px "EB Garamond", Georgia, serif', COLORS.ink, nameEl.textContent);
+    const rb = box(rule);
+    ctx.beginPath();
+    ctx.moveTo(rb.x, rb.y + 0.06 * s);
+    ctx.lineTo(rb.x + rb.w, rb.y + 0.06 * s);
+    ctx.lineWidth = 0.12 * s;
+    ctx.strokeStyle = COLORS.ink;
+    ctx.stroke();
+    line(title, '600 ' + (1.4 * s) + 'px Cinzel, Georgia, serif', COLORS.blue, title.textContent, 0.1 * 1.4 * s);
+  });
+
+  const seal = el.cert.querySelector('.seal');
+  const sb = box(seal);
+  const R = sb.w / 2;
+  ctx.beginPath(); ctx.arc(sb.cx, sb.cy, R, 0, Math.PI * 2); ctx.fillStyle = COLORS.red; ctx.fill();
+  ctx.beginPath(); ctx.arc(sb.cx, sb.cy, R - 0.5 * s, 0, Math.PI * 2); ctx.fillStyle = COLORS.blue; ctx.fill();
+  ctx.beginPath(); ctx.arc(sb.cx, sb.cy, R - 1.0 * s, 0, Math.PI * 2); ctx.lineWidth = 0.2 * s; ctx.strokeStyle = COLORS.white; ctx.stroke();
+  const ss = box(seal.querySelector('svg'));
+  drawStar(ctx, ss.x, ss.y, ss.w, COLORS.white);
+
+  return canvas;
+}
+
+function downloadBlob(blob, fname){
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = fname;
+  a.style.display = 'none';
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  setTimeout(function(){ URL.revokeObjectURL(url); }, 1500);
+}
+
+async function exportPng(){
+  if (!readyToOutput()) return;
+  el.btnPng.disabled = true;
+  setStatus('Preparing image...', 'info');
+  try {
+    try {
+      await Promise.all([
+        document.fonts.load('600 60px Cinzel'),
+        document.fonts.load('700 60px Cinzel'),
+        document.fonts.load('italic 30px "EB Garamond"'),
+        document.fonts.load('400 30px "EB Garamond"')
+      ]);
+    } catch (e) { /* fall through to system fonts */ }
+    await document.fonts.ready;
+    fitName();
+    const canvas = drawCertificate();
+    const blob = await new Promise(function(resolve, reject){
+      canvas.toBlob(function(b){ if (b) resolve(b); else reject(new Error('The image could not be created.')); }, 'image/png');
+    });
+    const rank = cfg().ranks[state.rankIndex];
+    const fname = kebab(state.scoutName.trim()) + '-' + kebab(rank) + '-certificate.png';
+    const file = new File([blob], fname, { type:'image/png' });
+    const coarse = window.matchMedia && window.matchMedia('(pointer: coarse)').matches;
+    if (coarse && navigator.canShare && navigator.canShare({ files:[file] })) {
+      try {
+        await navigator.share({ files:[file], title: state.scoutName.trim() + ' ' + rank + ' certificate' });
+        setStatus('Certificate shared.', 'ok');
+      } catch (e) {
+        if (e && e.name === 'AbortError') { setStatus('', ''); return; }
+        if (e && e.name === 'NotAllowedError') { downloadBlob(blob, fname); setStatus('Certificate saved.', 'ok'); return; }
+        throw e;
+      }
+    } else {
+      downloadBlob(blob, fname);
+      setStatus('Certificate saved.', 'ok');
+    }
+  } catch (e) {
+    if (e && e.name === 'AbortError') { setStatus('', ''); return; }
+    setStatus('Save failed: ' + (e && e.message ? e.message : String(e)), 'error');
+  } finally {
+    el.btnPng.disabled = false;
+  }
+}
+
+function nextScout(){
+  state.scoutName = '';
+  state.highlights = '';
+  state.citation = '';
+  el.scoutName.value = '';
+  el.highlights.value = '';
+  el.citation.value = '';
+  render();
+  setStatus('Ready for the next Scout. Rank and date are unchanged.', 'info');
+  el.scoutName.focus();
+}
+
+function openSettings(){
+  el.apiKey.value = lsGet(LS_KEY) || '';
+  el.sessionName.value = lsGet(LS_SESSION) || '';
+  el.settings.hidden = false;
+  el.apiKey.focus();
+}
+
+function closeSettings(){
+  el.settings.hidden = true;
+  el.btnSettings.focus();
+}
+
+function saveSettings(){
+  const ok = lsSet(LS_KEY, el.apiKey.value.trim()) && lsSet(LS_SESSION, el.sessionName.value.trim());
+  closeSettings();
+  setStatus(ok ? 'Settings saved.' : 'Settings could not be saved in this browser.', ok ? 'ok' : 'error');
+}
+
+/* Wiring */
+el.btnPack.addEventListener('click', function(){ setUnitType('pack'); });
+el.btnTroop.addEventListener('click', function(){ setUnitType('troop'); });
+el.unitNumber.addEventListener('input', function(){
+  const clean = el.unitNumber.value.replace(/\D/g, '');
+  if (clean !== el.unitNumber.value) el.unitNumber.value = clean;
+  state.unitNumber = clean; saveUnit(); render();
+});
+el.signer1.addEventListener('input', function(){ state.signer1 = el.signer1.value; saveUnit(); render(); });
+el.signer2.addEventListener('input', function(){ state.signer2 = el.signer2.value; saveUnit(); render(); });
+el.scoutName.addEventListener('input', function(){ state.scoutName = el.scoutName.value; render(); });
+el.rankSelect.addEventListener('change', function(){ state.rankIndex = parseInt(el.rankSelect.value, 10) || 0; render(); });
+el.ceremonyDate.addEventListener('input', function(){ state.date = el.ceremonyDate.value; render(); });
+el.highlights.addEventListener('input', function(){ state.highlights = el.highlights.value; });
+el.citation.addEventListener('input', function(){ state.citation = el.citation.value; render(); });
+el.btnGenerate.addEventListener('click', generate);
+el.btnPrint.addEventListener('click', printCert);
+el.btnPng.addEventListener('click', exportPng);
+el.btnNext.addEventListener('click', nextScout);
+el.btnSettings.addEventListener('click', openSettings);
+el.btnSaveSettings.addEventListener('click', saveSettings);
+el.btnCloseSettings.addEventListener('click', closeSettings);
+el.settings.addEventListener('click', function(e){ if (e.target === el.settings) closeSettings(); });
+document.addEventListener('keydown', function(e){ if (e.key === 'Escape' && !el.settings.hidden) closeSettings(); });
+window.addEventListener('resize', fitName);
+window.addEventListener('beforeprint', fitName);
+
+/* Startup */
+loadUnit();
+el.unitNumber.value = state.unitNumber;
+el.signer1.value = state.signer1;
+el.signer2.value = state.signer2;
+el.ceremonyDate.value = state.date;
+setUnitType(state.unitType);
+if (document.fonts && document.fonts.ready) document.fonts.ready.then(fitName);
+})();
+</script>
+</body>
+</html>
