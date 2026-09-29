@@ -227,7 +227,7 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--red);outline-offset
 (function(){
 'use strict';
 
-const CLAUDE_MODEL = 'claude-sonnet-5';
+const CLAUDE_MODEL = await getModel();
 const PACK_RANKS = ['Lion','Tiger','Wolf','Bear','Webelos','Arrow of Light'];
 const PACK_TIERS = [0,0,1,1,1,1];
 const TROOP_RANKS = ['Scout','Tenderfoot','Second Class','First Class','Star','Life','Eagle'];
@@ -739,6 +739,17 @@ el.ceremonyDate.value = state.date;
 setUnitType(state.unitType);
 if (document.fonts && document.fonts.ready) document.fonts.ready.then(fitName);
 })();
+
+async function getModel(tier = 'sonnet') {
+  try {
+    const response = await fetch('../config.json');
+    const config = await response.json();
+    return config.models[tier];
+  } catch {
+    return 'claude-sonnet-5-5';
+  }
+}
 </script>
 </body>
 </html>
+
