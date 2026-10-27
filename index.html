@@ -10,6 +10,8 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black">
 <link rel="manifest" href="https://augustineiacopelli.github.io/appaday/manifests/141.webmanifest">
 <script src="https://augustineiacopelli.github.io/appaday/save.js" defer></script>
+<script src="https://augustineiacopelli.github.io/appaday/models.js"></script>
+<script src="https://augustineiacopelli.github.io/appaday/keys.js" data-app="141" data-legacy-key="appaday-141-apikey" data-accent="#C8401A" defer></script>
 <meta name="theme-color" content="#0a3161">
 <title>Court of Honor Citation | AppADay 141</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -218,9 +220,8 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--red);outline-offset
 <div class="modal" id="settings" hidden>
   <div class="dialog" role="dialog" aria-modal="true" aria-labelledby="settingsTitle">
     <h2 id="settingsTitle">Settings</h2>
-    <label for="apiKey">Anthropic API key</label>
-    <input type="password" id="apiKey" autocomplete="off" spellcheck="false">
-    <p class="hint">Stored only in this browser. Without a key, citations come from built in templates.</p>
+    <div id="keyMount"><p class="hint">The key manager is loading. If this stays, check your connection and reload.</p></div>
+    <p class="hint">Without a key, citations come from built in templates.</p>
     <label for="sessionName">Session name</label>
     <input type="text" id="sessionName" autocomplete="off" placeholder="Optional">
     <div class="btns">
@@ -234,7 +235,7 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--red);outline-offset
 (function(){
 'use strict';
 
-const CLAUDE_MODEL = await getModel();
+let CLAUDE_MODEL = (window.AppModels ? window.AppModels.id('sonnet') : '');
 const PACK_RANKS = ['Lion','Tiger','Wolf','Bear','Webelos','Arrow of Light'];
 const PACK_TIERS = [0,0,1,1,1,1];
 const TROOP_RANKS = ['Scout','Tenderfoot','Second Class','First Class','Star','Life','Eagle'];
@@ -251,7 +252,6 @@ const UNIT_CONFIG = {
   troop: { label:'Troop', event:'Court of Honor',       signers:['Scoutmaster','Committee Chair'], ranks:TROOP_RANKS, tiers:TROOP_TIERS }
 };
 const LS_UNIT = 'appaday-141-unit';
-const LS_KEY = 'appaday-141-apikey';
 const LS_SESSION = 'appaday-141-session';
 
 const SYSTEM_PROMPT = 'You write short citations for Scouting advancement certificates. Write two or three sentences, under 70 words total, in plain text. Do not use quotation marks, a salutation, a signature, or a title. Refer to the Scout by first name. Use only the facts provided; never invent achievements, events, or merit badges. If a highlight is provided, weave it in naturally. Match the requested tone exactly. Return only the citation text.';
@@ -268,7 +268,7 @@ const el = {
   cert:$('cert'), certUnit:$('certUnit'), certPresented:$('certPresented'), certName:$('certName'),
   certRank:$('certRank'), certCitation:$('certCitation'), certDate:$('certDate'),
   certSig1:$('certSig1'), certSig2:$('certSig2'),
-  settings:$('settings'), apiKey:$('apiKey'), sessionName:$('sessionName'),
+  settings:$('settings'), sessionName:$('sessionName'),
   btnSettings:$('btnSettings'), btnSaveSettings:$('btnSaveSettings'), btnCloseSettings:$('btnCloseSettings')
 };
 
@@ -457,12 +457,12 @@ async function generate(){
     el.scoutName.focus();
     return;
   }
-  const key = (lsGet(LS_KEY) || '').trim();
+  const key = (window.AppKeys && window.AppKeys.has()) ? await window.AppKeys.get() : null;
   if (!key) {
     state.citation = fallbackCitation();
     el.citation.value = state.citation;
     render();
-    setStatus('Template citation. Add an API key in Settings for a personalized one.', 'info');
+    setStatus('Template citation. Add a Claude API key in Settings for a personalized one.', 'info');
     return;
   }
   busy = true;
@@ -693,10 +693,9 @@ function nextScout(){
 }
 
 function openSettings(){
-  el.apiKey.value = lsGet(LS_KEY) || '';
+  if (window.AppKeys) window.AppKeys.mountSettings($('keyMount'));
   el.sessionName.value = lsGet(LS_SESSION) || '';
   el.settings.hidden = false;
-  el.apiKey.focus();
 }
 
 function closeSettings(){
@@ -705,7 +704,7 @@ function closeSettings(){
 }
 
 function saveSettings(){
-  const ok = lsSet(LS_KEY, el.apiKey.value.trim()) && lsSet(LS_SESSION, el.sessionName.value.trim());
+  const ok = lsSet(LS_SESSION, el.sessionName.value.trim());
   closeSettings();
   setStatus(ok ? 'Settings saved.' : 'Settings could not be saved in this browser.', ok ? 'ok' : 'error');
 }
@@ -747,15 +746,6 @@ setUnitType(state.unitType);
 if (document.fonts && document.fonts.ready) document.fonts.ready.then(fitName);
 })();
 
-async function getModel(tier = 'sonnet') {
-  try {
-    const response = await fetch('../config.json');
-    const config = await response.json();
-    return config.models[tier];
-  } catch {
-    return 'claude-sonnet-5-5';
-  }
-}
 </script>
 </body>
 </html>

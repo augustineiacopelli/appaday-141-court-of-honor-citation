@@ -20,7 +20,7 @@ The certificate uses a red, white, and blue palette in Old Glory blue and Old Gl
 
 ## Claude and your API key
 
-Citations are written by Claude (`claude-sonnet-5`) called directly from your browser. Add your own Anthropic API key in Settings (the gear icon). The key is stored only in this browser's local storage and is never sent anywhere except the Anthropic API. Without a key, the app fills in a built in template citation matched to the rank, so it still works offline from the AI.
+Citations are written by Claude (the current Claude Sonnet model) called directly from your browser. Add your own Anthropic API key in Settings (the gear icon). The key is stored only in this browser's local storage and is never sent anywhere except the Anthropic API. Without a key, the app fills in a built in template citation matched to the rank, so it still works offline from the AI.
 
 ## Technical notes
 
